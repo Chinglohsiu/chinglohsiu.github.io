@@ -45,7 +45,15 @@
   fill: #e22;
   stroke: #500;
 }
+#section3 midi-visualizer svg rect.note[data-instrument="1"]{
+  fill: #8e0;
+  stroke: #880;
+}
 #section3 midi-visualizer svg rect.note[data-instrument="2"]{
+  fill: #f9f;
+  stroke: #f0f;
+}
+#section3 midi-visualizer svg rect.note[data-instrument="3"]{
   fill: #2ee;
   stroke: #055;
 }
