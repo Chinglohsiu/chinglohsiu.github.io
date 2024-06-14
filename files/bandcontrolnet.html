@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.55.5" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/custom.css">
+<title>BandControlNet</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<header role="banner">
+
+
+
+
+	</header>
+
+
+    <main role="main">
+
+<h1 id="title">BandControlNet:  Fine-Grained Spatiotemporal Features for Steerable Popular Music Generation</h1>
+
+<!-- 
+<P>Jing Luo, Yongyu Wang, Juan Li, Xinyu Yang<p>
+
+
+<p><b>Abstract</b> </p>
+
+-->
+
+<!--超链接：paper的地址-->
+<!-- 
+<a href="xxx">paper link</a>
+-->
+<h2 id="Abstract">1.  Abstract </h2>
+
+Controllable music generation promotes the interaction between human and composition systems by projecting users' intent on their desired music, 
+which is an increasingly crucial issue in the symbolic music generation field. However, there remain two obvious problems namely weak controllability 
+and poor music quality for users who want to steer the current systems to generate popular music of multiple instruments. To address the issues, 
+we first propose spatiotemporal features as powerful and fine-grained controls to enhance the controllability of the generative model. Moreover, 
+an efficient music representation called REMI_Track is designed to convert multitrack music into multiple parallel music sequences and 
+shorten the sequence length of each track with Byte Pair Encoding (BPE) techniques. Subsequently, we release BandControlNet, a conditional model 
+based on parallel Transformers, to tackle the multiple music sequences and generate high-quality music samples that adhere to the given spatiotemporal features. 
+More concretely, the two specially designed modules of BandControlNet namely structure-enhanced self-attention (SE-SA) and Cross-Track Transformer (CTT) 
+are utilized to strengthen the structure and inter-track modelling respectively. Experimental results tested on two popular music datasets of different lengths 
+demonstrate our BandControlNet exhibits its superiority over other conditional music generation models on most objective metrics in terms of <i>fidelity</i> and 
+<i>inference speed</i> and shows great robustness in generating long music samples. The listening tests of subjective evaluation show comparable results on 
+short datasets to SOTA while showing significant superiority on a longer dataset.
+
+
+<h2 id="Architecture">2. The Architecture of BandControlNet </h2>
+
+<img width="80%" height="80%" src="./BandControlNet/model_overall.png" alt="mgd_large">
+
+
+<h2 id="Samples">3.  Generated Samples </h2>
+
+<p>
+  Sample-1
+</p>
+
+<midi-player
+  src="./BandControlNet/reference_set_2.mid"
+  sound-font visualizer="#myPianoRollVisualizer">
+</midi-player>
+
+<midi-visualizer type="piano-roll" id="myPianoRollVisualizer" 
+src="./BandControlNet/reference_set_2.mid">
+</midi-visualizer>
+
+
+<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+
+
+<p>The MIDI Web Player is provided by <a href="https://github.com/cifkao/html-midi-player" target="_blank"><strong>html-midi-player</strong></a></p>
+
+
+<h2 id="contact">4.  Contact</h2>
+<P>
+    For reaching me by email, please use: <a href="mailto:chinglohsiu@gmail.com">chinglohsiu[AT]gmail.com</a> or visit my <a href="../index.html">Homepage.</a>
+</P>
+
+    </main>
+    </div>
+
+
+</body>
+</html>
