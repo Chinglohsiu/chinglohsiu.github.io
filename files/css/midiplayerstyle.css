@@ -50,12 +50,12 @@
   stroke: #880;
 }
 #section3 midi-visualizer svg rect.note[data-instrument="2"]{
-  fill: #f9f;
-  stroke: #f0f;
-}
-#section3 midi-visualizer svg rect.note[data-instrument="3"]{
   fill: #2ee;
   stroke: #055;
+}
+#section3 midi-visualizer svg rect.note[data-instrument="3"]{
+  fill: #f9f;
+  stroke: #f0f;
 }
 #section3 midi-visualizer svg rect.note[data-is-drum="true"]{
   fill: #888;
