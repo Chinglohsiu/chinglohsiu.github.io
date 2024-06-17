@@ -9,7 +9,138 @@
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/skeleton.css">
 <link rel="stylesheet" href="css/custom.css">
-<link rel="stylesheet" href="css/midiplayerstyle.css">
+
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        /* Custom player style */
+#section3 midi-player {
+  display: block;
+  width: inherit;
+  margin: 4px;
+  margin-bottom: 0;
+}
+#section3 midi-player::part(control-panel) {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 10px 10px 0 0;
+}
+#section3 midi-player::part(play-button) {
+  color: #353;
+  border: 2px solid currentColor;
+  background-color: #4d4;
+  border-radius: 20px;
+  transition: all 0.2s;
+  content: 'hello';
+}
+#section3 midi-player::part(play-button):hover {
+  color: #0a0;
+  background-color: #5f5;
+  border-radius: 10px;
+}
+#section3 midi-player::part(time) {
+  font-family: monospace;
+}
+
+/* Custom visualizer style */
+#section3 midi-visualizer .piano-roll-visualizer {
+  background: #fff;
+  border: 2px solid black;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  margin: 4px;
+  margin-top: 0;
+  overflow: auto;
+}
+#section3 midi-visualizer svg rect.note {
+  opacity: 0.6;
+  stroke-width: 2;
+}
+#section3 midi-visualizer svg rect.note[data-instrument="0"]{
+  fill: #e22;
+  stroke: #500;
+}
+#section3 midi-visualizer svg rect.note[data-instrument="1"]{
+  fill: #8e0;
+  stroke: #880;
+}
+#section3 midi-visualizer svg rect.note[data-instrument="2"]{
+  fill: #2ee;
+  stroke: #055;
+}
+#section3 midi-visualizer svg rect.note[data-instrument="3"]{
+  fill: #f9f;
+  stroke: #f0f;
+}
+#section3 midi-visualizer svg rect.note[data-is-drum="true"]{
+  fill: #888;
+  stroke: #888;
+}
+#section3 midi-visualizer svg rect.note.active {
+  opacity: 0.9;
+  stroke: #000;
+}
+
+body,
+        td,
+        th,
+        tr,
+        p,
+        a {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        font-size: 18px
+        }
+
+        strong {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        font-size: 18px;
+        /* color: rgb(180, 16, 44); */
+        }
+
+        annot {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        font-size: 18px;
+        color: rgb(100, 100, 100);
+        }
+
+        papertitle {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 32px;
+            color: rgb(0, 62, 116);
+            /* color: rgb(0, 0, 0); */
+        }
+
+        author {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            /* color : rgb(180, 16, 44) */
+            color: rgb(0, 0, 0);
+        }
+
+        heading {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 25px;
+            color: rgb(0, 62, 116);
+            /* color: rgb(0, 0, 0); */
+        }
+
+        subheading {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 22px;
+            /* font-style:italic; */
+            color : rgb(57, 116, 169)
+            /* color: rgb(0, 0, 0); */
+        }
+
+        .footer {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 14px;
+            opacity: 0.75;
+            color: #777;
+        }
+
+
+    </style>
 <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
 
 <title>BandControlNet</title>
@@ -21,230 +152,403 @@
 
 	<header role="banner">
 
-
-
-
 	</header>
-
-
     <main role="main">
 
-<h1 id="title">BandControlNet:  Fine-Grained Spatiotemporal Features for Steerable Popular Music Generation</h1>
 
-<!-- 
-<P>Jing Luo, Yongyu Wang, Juan Li, Xinyu Yang<p>
-
-
-<p><b>Abstract</b> </p>
-
--->
-
-<!--超链接：paper的地址-->
-<!-- 
-<a href="xxx">paper link</a>
--->
-<h2 id="Abstract">1.  Abstract </h2>
-
-Controllable music generation promotes the interaction between humans and composition systems by projecting the users' intent on their desired music. 
-The challenge of introducing controllability is an increasingly important issue in the symbolic music generation field. 
-When building controllable generative popular multi-instrument music systems, two main challenges typically present themselves, 
-namely weak controllability and poor music quality. To address these issues, we first propose spatiotemporal features as powerful and fine-grained 
-controls to enhance the controllability of the generative model. In addition, an efficient music representation called REMI_Track is designed to 
-convert multitrack music into multiple parallel music sequences and shorten the sequence length of each track with Byte Pair Encoding (BPE) techniques. 
-Subsequently, we release BandControlNet, a conditional model based on parallel Transformers, to tackle the multiple music sequences and generate 
-high-quality music samples that are conditioned to the given spatiotemporal control features. More concretely, the two specially designed modules of 
-BandControlNet, namely structure-enhanced self-attention (SE-SA) and Cross-Track Transformer (CTT), are utilized to strengthen the resulting musical 
-structure and inter-track harmony modeling respectively. Experimental results tested on two popular music datasets of different lengths demonstrate 
-that the proposed BandControlNet outperforms other conditional music generation models on most objective metrics in terms of fidelity and 
-inference speed and shows great robustness in generating long music samples. The listening tests performed as subjective evaluation show comparable 
-results on datasets with short samples to state-of-the-art while outperforming significantly on a longer dataset.
-
-
-<h2 id="Architecture">2. The Architecture of BandControlNet </h2>
-
-<img width="80%" height="80%" src="./BandControlNet/model_overall.png" alt="mgd_large">
-
-
-<h2 id="Samples">3.  Generated Samples </h2>
-<!-- 0,58,107,157,235 -->
-
-<tr>
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
+  <tr>
   <td>
-      <strong>Sample-1: Reference</strong>
-      <section id="section3">
-      <midi-player
-          src="./BandControlNet/reference_set_1.mid"
-          sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-          sound-font visualizer="#S1_ref">
-      </midi-player>
-      <midi-visualizer src="./BandControlNet/reference_set_1.mid" id="S1_ref"></midi-visualizer>
-      </section>
+      <papertitle>BandControlNet:  Fine-Grained Spatiotemporal Features for Steerable Popular Music Generation</papertitle>
   </td>
-</tr>
-
-<p>
-  Sample-1: Reference
-</p>
-
-<section id="section3">
-<midi-player
-  src="./BandControlNet/reference_set_1.mid"
-  sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-  sound-font visualizer="#S1_ref">
-</midi-player>
-
-<!-- <midi-visualizer id="#S1_ref"
-src="./BandControlNet/reference_set_1.mid">
-</midi-visualizer> -->
-</section>
-
-<p></p>
-<p>
-  Sample-1: FIGARO
-</p>
-
-<section id="section3">
-  <midi-player
-    src="./BandControlNet/FIGARO_set_1.mid"
-    sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-    sound-font visualizer="#S1_FIGARO">
-  </midi-player>
+  </tr
   
-  <midi-visualizer id="#S1_FIGARO"
-  src="./BandControlNet/FIGARO_set_1.mid">
-  </midi-visualizer>
-  </section>
+  <tr>
+      <td>
+          <b><author>Author A, Author B, Author C, Author D</author></b>
+          <p>
+              Xi'an Jiaotong University, China
+              <br>
+              Singapore University of Technology and Design, Singapore
+          </p>
+          <p>
+              Submitted to XXXX. &nbsp;&nbsp; <a href="xxx">arXiv</a>
+          </p>
+      </td>
+  </tr>
 
-  <p></p>
-  <p>
-    Sample-1: BandControlNet
-  </p>
-  
-  <section id="section3">
-    <midi-player
-      src="./BandControlNet/BandControlNet_set_1.mid"
-      sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-      sound-font visualizer="#S1_BCN">
-    </midi-player>
-    
-    <midi-visualizer id="#S1_BCN"
-    src="./BandControlNet/BandControlNet_set_1.mid">
-    </midi-visualizer>
-    </section>
+  <tr>
+    <td>
+        <heading>Abstract</heading>
+        <p>
+          Controllable music generation promotes the interaction between humans and composition systems by projecting the users' intent on their desired music. 
+          The challenge of introducing controllability is an increasingly important issue in the symbolic music generation field. 
+          When building controllable generative popular multi-instrument music systems, two main challenges typically present themselves, 
+          namely weak controllability and poor music quality. To address these issues, we first propose spatiotemporal features as powerful and fine-grained 
+          controls to enhance the controllability of the generative model. In addition, an efficient music representation called REMI_Track is designed to 
+          convert multitrack music into multiple parallel music sequences and shorten the sequence length of each track with Byte Pair Encoding (BPE) techniques. 
+          Subsequently, we release BandControlNet, a conditional model based on parallel Transformers, to tackle the multiple music sequences and generate 
+          high-quality music samples that are conditioned to the given spatiotemporal control features. More concretely, the two specially designed modules of 
+          BandControlNet, namely structure-enhanced self-attention (SE-SA) and Cross-Track Transformer (CTT), are utilized to strengthen the resulting musical 
+          structure and inter-track harmony modeling respectively. Experimental results tested on two popular music datasets of different lengths demonstrate 
+          that the proposed BandControlNet outperforms other conditional music generation models on most objective metrics in terms of fidelity and 
+          inference speed and shows great robustness in generating long music samples. The listening tests performed as subjective evaluation show comparable 
+          results on datasets with short samples to state-of-the-art while outperforming significantly on a longer dataset.
+        </p>
+    </td>
+  </tr>
 
-<hr style="border:1 dashed #987cb9" width="80%" color="987cb9" SIZE=2>
+  <tr>
+    <td>
+        <heading>Dataset</heading>
+        <p>
+          We conduct experiments on a popular music subset of 
+          the <a href="https://colinraffel.com/projects/lmd/" target="_blank">LakhMIDI(LMD)</a> dataset, which is the largest 
+          publicly available symbolic music dataset that contains multiple instruments. 
+        </p>
+    </td>
+  </tr>
 
-<p>
-  Sample-2: Reference
-</p>
+  <tr>
+    <td>
+      <heading>Code</heading>
+      <p>
+        The source code is available at <a href="https://github.com/Chinglohsiu/BandControlNet" target="_blank">here</a>.
+      </p>
+    </td>
+  </tr>
 
-<section id="section3">
-<midi-player
-  src="./BandControlNet/reference_set_2.mid"
-  sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-  sound-font visualizer="#S2_ref">
-</midi-player>
+  <tr>
+    <td>
+      <heading> Architecture</heading>
+      <p>
+        <img width="80%" height="80%" src="./BandControlNet/model_overall.png" alt="mgd_large">
+      </p>
+    </td>
+  </tr>
 
-<!-- <midi-visualizer id="#S2_ref"
-src="./BandControlNet/reference_set_2.mid">
-</midi-visualizer> -->
-</section>
+  <tr>
+    <td>
+      <heading>Generated Samples</heading>
+    </td>
+  </tr>
 
-<p>
-  Sample-2: FIGARO
-</p>
+  <!-- 0,58,107,157,235 -->
 
-<section id="section3">
-  <midi-player
-    src="./BandControlNet/FIGARO_set_2.mid"
-    sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-    sound-font visualizer="#S2_FIGARO">
-  </midi-player>
-  
-  <!-- <midi-visualizer id="#S2_FIGARO"
-  src="./BandControlNet/FIGARO_set_2.mid">
-  </midi-visualizer> -->
-  </section>
+  <tr>
+    <td>
+      <subheading><strong>Samples-1</strong></subheading>
+    </td>
+  </tr>
 
-  <p>
-    Sample-2: BandControlNet
-  </p>
-  
-  <section id="section3">
-    <midi-player
-      src="./BandControlNet/BandControlNet_set_2.mid"
-      sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-      sound-font visualizer="#S2_BCN">
-    </midi-player>
-    
-    <!-- <midi-visualizer id="#S2_BCN"
-    src="./BandControlNet/BandControlNet_set_2.mid">
-    </midi-visualizer> -->
-    </section>
+  <tr>
+    <td>
+        <strong>Reference</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/reference_set_1.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S1_ref">
+        </midi-player>
+        <!-- <midi-visualizer src="./BandControlNet/reference_set_1.mid" id="S1_ref"></midi-visualizer> -->
+        </section>
+    </td>
+  </tr>
 
-<hr style="border:1 dashed #987cb9" width="80%" color="987cb9" SIZE=2>
+  <tr>
+    <td>
+        <strong>FIGARO</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/FIGARO_set_1.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S1_FIGARO">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/FIGARO_set_1.mid" id="S1_FIGARO"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
 
-<p>
-  Sample-3: Reference
-</p>
+  <tr>
+    <td>
+        <strong>BandControlNet</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/BandControlNet_set_1.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S1_BCN">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/BandControlNet_set_1.mid" id="S1_BCN"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
 
-<section id="section3">
-<midi-player
-  src="./BandControlNet/reference_set_6.mid"
-  sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-  sound-font visualizer="#S3_ref">
-</midi-player>
+  <tr>
+    <td>
+      <subheading><strong>Samples-2</strong></subheading>
+    </td>
+  </tr>
 
-<!-- <midi-visualizer id="#S3_ref"
-src="./BandControlNet/reference_set_6.mid">
-</midi-visualizer>-->
-</section> 
+  <tr>
+    <td>
+        <strong>Reference</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/reference_set_2.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S2_ref">
+        </midi-player>
+        <!-- <midi-visualizer src="./BandControlNet/reference_set_2.mid" id="S2_ref"></midi-visualizer> -->
+        </section>
+    </td>
+  </tr>
 
-<p>
-  Sample-3: FIGARO
-</p>
+  <tr>
+    <td>
+        <strong>FIGARO</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/FIGARO_set_2.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S2_FIGARO">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/FIGARO_set_2.mid" id="S2_FIGARO"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
 
-<section id="section3">
-  <midi-player
-    src="./BandControlNet/FIGARO_set_6.mid"
-    sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-    sound-font visualizer="#S3_FIGARO">
-  </midi-player>
-  
-  <!-- <midi-visualizer id="#S3_FIGARO"
-  src="./BandControlNet/FIGARO_set_6.mid">
-  </midi-visualizer> -->
-  </section>
-
-  <p>
-    Sample-3: BandControlNet
-  </p>
-  
-  <section id="section3">
-    <midi-player
-      src="./BandControlNet/BandControlNet_set_6.mid"
-      sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-      sound-font visualizer="#S3_BCN">
-    </midi-player>
-    
-    <!-- <midi-visualizer id="#S3_BCN"
-    src="./BandControlNet/BandControlNet_set_6.mid">
-    </midi-visualizer> -->
-    </section>
+  <tr>
+    <td>
+        <strong>BandControlNet</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/BandControlNet_set_2.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S2_BCN">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/BandControlNet_set_2.mid" id="S2_BCN"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
 
 
+  <tr>
+    <td>
+      <subheading><strong>Samples-3</strong></subheading>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>Reference</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/reference_set_3.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S3_ref">
+        </midi-player>
+        <!-- <midi-visualizer src="./BandControlNet/reference_set_3.mid" id="S3_ref"></midi-visualizer> -->
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>FIGARO</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/FIGARO_set_3.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S3_FIGARO">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/FIGARO_set_3.mid" id="S3_FIGARO"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>BandControlNet</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/BandControlNet_set_3.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S3_BCN">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/BandControlNet_set_3.mid" id="S3_BCN"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <subheading><strong>Samples-4</strong></subheading>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>Reference</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/reference_set_4.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S4_ref">
+        </midi-player>
+        <!-- <midi-visualizer src="./BandControlNet/reference_set_4.mid" id="S4_ref"></midi-visualizer> -->
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>FIGARO</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/FIGARO_set_4.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S4_FIGARO">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/FIGARO_set_4.mid" id="S4_FIGARO"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>BandControlNet</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/BandControlNet_set_4.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S4_BCN">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/BandControlNet_set_4.mid" id="S4_BCN"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
 
 
-<p>The MIDI Web Player is provided by <a href="https://github.com/cifkao/html-midi-player" target="_blank"><strong>html-midi-player</strong></a></p>
+  <tr>
+    <td>
+      <subheading><strong>Samples-5</strong></subheading>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>Reference</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/reference_set_5.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S5_ref">
+        </midi-player>
+        <!-- <midi-visualizer src="./BandControlNet/reference_set_5.mid" id="S5_ref"></midi-visualizer> -->
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>FIGARO</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/FIGARO_set_5.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S5_FIGARO">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/FIGARO_set_5.mid" id="S5_FIGARO"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>BandControlNet</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/BandControlNet_set_5.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S5_BCN">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/BandControlNet_set_5.mid" id="S5_BCN"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
 
 
-<h2 id="contact">4.  Contact</h2>
-<P>
-    For reaching me by email, please use: <a href="mailto:chinglohsiu@gmail.com">chinglohsiu[AT]gmail.com</a> or visit my <a href="../index.html">Homepage.</a>
-</P>
+  <tr>
+    <td>
+      <subheading><strong>Samples-6</strong></subheading>
+    </td>
+  </tr>
 
-    </main>
-    </div>
+  <tr>
+    <td>
+        <strong>Reference</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/reference_set_6.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S6_ref">
+        </midi-player>
+        <!-- <midi-visualizer src="./BandControlNet/reference_set_6.mid" id="S6_ref"></midi-visualizer> -->
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>FIGARO</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/FIGARO_set_6.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S6_FIGARO">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/FIGARO_set_6.mid" id="S6_FIGARO"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+        <strong>BandControlNet</strong>
+        <section id="section3">
+        <midi-player
+            src="./BandControlNet/BandControlNet_set_6.mid"
+            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+            sound-font visualizer="#S6_BCN">
+        </midi-player>
+        <midi-visualizer src="./BandControlNet/BandControlNet_set_6.mid" id="S6_BCN"></midi-visualizer>
+        </section>
+    </td>
+  </tr>
+
+</table>
+
+
+<table width="100%" align="center" border="0" cellpadding="12">
+  <tr>
+    <td width="100%" valign="center">
+      <p class="footer">
+        For reaching me by email, please use: <a href="mailto:chinglohsiu@gmail.com" target="_blank" style="color: #777; font-size: 14px;">CHINGLOHSIU[AT]gmail[DOT]com</a> 
+        or visit my <a href="../index.html" target="_blank" style="color: #777; font-size: 14px;">Homepage.</a>
+        <br>The MIDI Web Player is provided by <a href="https://github.com/cifkao/html-midi-player" target="_blank" style="color: #777; font-size: 14px;">html-midi-player</a>
+        <br>Last updated:
+        <script>
+          t = new Date(document.lastModified).toLocaleDateString()
+          document.write(t);
+        </script>
+      </p>
+    </td>
+  </tr>
+</table>
+
+
+</main>
+</div>
 
 
 </body>
