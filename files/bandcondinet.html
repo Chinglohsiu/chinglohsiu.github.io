@@ -143,7 +143,7 @@ body,
     </style>
 <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
 
-<title>BandControlNet</title>
+<title>BandCondiNet</title>
 </head>
 
 <body>
@@ -159,7 +159,7 @@ body,
 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
   <tr>
   <td>
-      <papertitle>BandControlNet: Parallel Transformers-based Steerable Popular Music Generation with Fine-Grained Spatiotemporal Features</papertitle>
+      <papertitle>BandCondiNet: Parallel Transformers-based Conditional Popular Music Generation with Multi-View Features</papertitle>
   </td>
   </tr
   
@@ -181,20 +181,22 @@ body,
     <td>
         <heading>Abstract</heading>
         <p>
-          Controllable music generation promotes the interaction between humans and composition systems by projecting the users' intent 
-          on their desired music. The challenge of introducing controllability is an increasingly important issue in the symbolic music generation 
-          field. When building controllable generative popular multi-instrument music systems, two main challenges typically present themselves, 
-          namely weak controllability and poor music quality. To address these issues, we first propose spatiotemporal features as powerful and 
-          fine-grained controls to enhance the controllability of the generative model. In addition, an efficient music representation called 
-          REMI_Track is designed to convert multitrack music into multiple parallel music sequences and shorten the sequence length of each track 
-          with Byte Pair Encoding (BPE) techniques. Subsequently, we release BandControlNet, a conditional model based on parallel Transformers, 
-          to tackle the multiple music sequences and generate high-quality music samples that are conditioned to the given spatiotemporal control 
-          features. More concretely, the two specially designed modules of BandControlNet, namely structure-enhanced self-attention (SE-SA) and 
-          Cross-Track Transformer (CTT), are utilized to strengthen the resulting musical structure and inter-track harmony modeling respectively. 
-          Experimental results tested on two popular music datasets of different lengths demonstrate that the proposed BandControlNet outperforms 
-          other conditional music generation models on most objective metrics in terms of <i>fidelity</i> and <i>inference speed</i> and shows great robustness 
-          in generating long music samples. The subjective evaluations show BandControlNet trained on short datasets can generate music with 
-          comparable quality to state-of-the-art models, while outperforming them significantly using longer datasets.
+          Conditional music generation offers significant advantages in terms of user convenience and control, 
+          presenting notable potential in AI-generated content research. 
+          When building conditional generative systems for multi-instrument popular songs, \
+          two main challenges typically arise: the insufficient fidelity of conditions and the poor quality of the generated music.
+          To address these issues, we first propose multi-view features across time and instruments as high-fidelity and fine-grained conditions. 
+          In addition, an efficient music representation called REMI_Track(BPE) is designed to convert multitrack music into multiple music sequences. 
+          Subsequently, we release BandCondiNet, a conditional model based on parallel Transformers, 
+          designed to process the multiple music sequences and generate high-quality multitrack samples conditioned on the provided multi-view features. 
+          Specifically, BandCondiNet incorporates two specialized modules: Structure Enhanced Attention (SEA) to strengthen the resulting musical structure, 
+          and Cross-Track Transformer (CTT) to enhance inter-track harmony. 
+          Experimental results tested on two popular music datasets of different lengths demonstrate 
+          that the proposed BandCondiNet outperforms other conditional music generation models on most objective metrics in terms of <i>fidelity</i> 
+          and <i>inference speed</i>, and shows great robustness in generating long music samples. 
+          The subjective evaluations further show BandCondiNet trained on short datasets performs comparable to state-of-art models, 
+          while outperforming them significantly training on longer datasets.
+          
         </p>
     </td>
   </tr>
@@ -214,7 +216,7 @@ body,
     <td>
       <heading>Code</heading>
       <p>
-        The source code is available at <a href="https://github.com/Chinglohsiu/BandControlNet" target="_blank">here</a>.
+        The source code is available at <a href="https://github.com/Chinglohsiu/BandCondiNet" target="_blank">here (To be updated)</a>.
       </p>
     </td>
   </tr>
@@ -223,7 +225,7 @@ body,
     <td>
       <heading> Architecture</heading>
       <p>
-        <img width="80%" height="80%" src="./BandControlNet/model_overall.png" alt="mgd_large">
+        <img width="80%" height="80%" src="./BandControlNet/model_overall_new.jpg" alt="mgd_large">
       </p>
     </td>
   </tr>
@@ -277,7 +279,7 @@ body,
 
   <tr>
     <td>
-        <strong>BandControlNet</strong>
+        <strong>BandCondiNet</strong>
         <section id="section3">
         <midi-player
             src="./BandControlNet/BandControlNet_set_1.mid"
@@ -325,7 +327,7 @@ body,
 
   <tr>
     <td>
-        <strong>BandControlNet</strong>
+        <strong>BandCondiNet</strong>
         <section id="section3">
         <midi-player
             src="./BandControlNet/BandControlNet_set_2.mid"
@@ -374,7 +376,7 @@ body,
 
   <tr>
     <td>
-        <strong>BandControlNet</strong>
+        <strong>BandCondiNet</strong>
         <section id="section3">
         <midi-player
             src="./BandControlNet/BandControlNet_set_3.mid"
@@ -422,7 +424,7 @@ body,
 
   <tr>
     <td>
-        <strong>BandControlNet</strong>
+        <strong>BandCondiNet</strong>
         <section id="section3">
         <midi-player
             src="./BandControlNet/BandControlNet_set_4.mid"
@@ -471,7 +473,7 @@ body,
 
   <tr>
     <td>
-        <strong>BandControlNet</strong>
+        <strong>BandCondiNet</strong>
         <section id="section3">
         <midi-player
             src="./BandControlNet/BandControlNet_set_5.mid"
@@ -520,7 +522,7 @@ body,
 
   <tr>
     <td>
-        <strong>BandControlNet</strong>
+        <strong>BandCondiNet</strong>
         <section id="section3">
         <midi-player
             src="./BandControlNet/BandControlNet_set_6.mid"
