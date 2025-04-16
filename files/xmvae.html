@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.55.5" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/custom.css">
+
+
+<title>XMVAE</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<header role="banner">
+
+	</header>
+    <main role="main">
+
+
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
+  <tr>
+  <td>
+      <papertitle>Exploring Classical Piano Performance Generation with Expressive Music Variational AutoEncoder</papertitle>
+  </td>
+  </tr
+  
+  <tr>
+      <td>
+          <b><author>Jing Luo, Xinyu Yang, and Jie Wei</author></b>
+          <p>
+              Xi'an Jiaotong University, China
+              <br>
+              China Mobile Group Shaanxi Co., Ltd., China
+          </p>
+          <!-- <p>
+              Submitted to IEEE TMM. &nbsp;&nbsp; <a href="xxx">arXiv (not available)</a>
+          </p> -->
+      </td>
+  </tr>
+
+  <tr>
+    <td>
+        <heading>Abstract</heading>
+        <p>
+          The creativity of classical music arises not only from composers who craft the musical sheets but also from performers who interpret the static notations with expressive nuances. 
+          This paper addresses the challenge of generating classical piano performances from scratch, aiming to emulate the dual roles of composer and pianist in the creative process. 
+          We introduce the Expressive Compound Word (ECP) representation, which effectively captures both the metrical structure and expressive nuances of classical performances. 
+          Building on this, we propose the Expressive Music Variational AutoEncoder (XMVAE), a model featuring two branches: a Vector Quantized Variational AutoEncoder (VQ-VAE) branch that generates score-related content, 
+          representing the <i>Composer</i>, and a vanilla VAE branch that produces expressive details, fulfilling the role of <i>Pianist</i>. 
+          These branches are jointly trained with similar Seq2Seq architectures, leveraging a multiscale encoder to capture beat-level contextual information and an orthogonal Transformer decoder for efficient compound tokens decoding. 
+          Both objective and subjective evaluations demonstrate that XMVAE generates classical performances with superior musical quality compared to state-of-the-art models. 
+          Furthermore, pretraining the <i>Composer</i> branch on extra musical score datasets contribute to a significant performance gain.
+          
+        </p>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>
+      <heading> Architecture</heading>
+      <p>
+        <img width="80%" height="80%" src="./XMVAE/xmvae_overall_new.jpg" alt="mgd_large">
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <heading>Generated Samples</heading>
+    </td>
+  </tr>
+
+  <!-- 0, 58, 410, 157, 235 -->
+
+
+  <tr>
+    <td>
+      <subheading><strong>XMVAE(ours)</strong></subheading>
+        <div class="ex">
+          <audio controls>
+              <source src="XMVAE/XMVAE-1_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="XMVAE/XMVAE-2_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="XMVAE/XMVAE-3_perf.mp3">
+          </audio>
+      </div>
+
+      <div class="ex">
+        <audio controls>
+            <source src="XMVAE/XMVAE-4_perf.mp3">
+        </audio>
+    </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <subheading><strong>NMT</strong></subheading>
+        <div class="ex">
+          <audio controls>
+              <source src="NMT/NMT-1_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="NMT/NMT-2_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="NMT/NMT-3_perf.mp3">
+          </audio>
+      </div>
+
+      <div class="ex">
+        <audio controls>
+            <source src="NMT/NMT-4_perf.mp3">
+        </audio>
+    </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <subheading><strong>ECPT</strong></subheading>
+        <div class="ex">
+          <audio controls>
+              <source src="ECPT/ECPT-1_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="ECPT/ECPT-2_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="ECPT/ECPT-3_perf.mp3">
+          </audio>
+      </div>
+
+      <div class="ex">
+        <audio controls>
+            <source src="ECPT/ECPT-4_perf.mp3">
+        </audio>
+    </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <subheading><strong>Transformer_GAN</strong></subheading>
+        <div class="ex">
+          <audio controls>
+              <source src="Transformer_GAN/TGAN-1_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="Transformer_GAN/TGAN-2_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="Transformer_GAN/TGAN-3_perf.mp3">
+          </audio>
+      </div>
+
+      <div class="ex">
+        <audio controls>
+            <source src="Transformer_GAN/TGAN-4_perf.mp3">
+        </audio>
+    </div>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>
+      <subheading><strong>MT</strong></subheading>
+        <div class="ex">
+          <audio controls>
+              <source src="MT/MT-1_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="MT/MT-2_perf.mp3">
+          </audio>
+      </div>
+      
+      <div class="ex">
+          <audio controls>
+              <source src="MT/MT-3_perf.mp3">
+          </audio>
+      </div>
+
+      <div class="ex">
+        <audio controls>
+            <source src="MT/MT-4_perf.mp3">
+        </audio>
+    </div>
+    </td>
+  </tr>
+
+
+
+</table>
+
+
+<table width="100%" align="center" border="0" cellpadding="12">
+  <tr>
+    <td width="100%" valign="center">
+      <p class="footer">
+        For reaching me by email, please use: <a href="mailto:chinglohsiu@gmail.com" target="_blank" style="color: #777; font-size: 14px;">CHINGLOHSIU[AT]gmail[DOT]com</a> 
+        or visit my <a href="../index.html" target="_blank" style="color: #777; font-size: 14px;">Homepage.</a>
+        <br>The MIDI Web Player is provided by <a href="https://github.com/cifkao/html-midi-player" target="_blank" style="color: #777; font-size: 14px;">html-midi-player</a>
+        <br>Last updated:
+        <script>
+          t = new Date(document.lastModified).toLocaleDateString()
+          document.write(t);
+        </script>         
+      </p>
+    </td>
+  </tr>
+</table>
+
+</main>
+</div>
+
+
+</body>
+</html>
