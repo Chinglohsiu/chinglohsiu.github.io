@@ -2,72 +2,73 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="generator" content="Hugo 0.55.5" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/skeleton.css">
-<link rel="stylesheet" href="css/custom.css">
-
-<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<style type="text/css"></style>
+<style>
+  body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Helvetica', sans-serif;
+      margin: auto;
+      max-width: 1400px;
+      padding-left: 5%;
+      padding-right: 5%;
+  }
+  h1 {
+      font-size: 35px;
+  }
+  h2 {
+      font-size: 25px;
+      font-weight: normal;
+  }
+  p {
+      font-size: 16px;
+  }
+  img {
+      width: 450px;
+  }
+  .ex {
+      display: inline-block;
+  }
+</style>
 
 <title>XMVAE</title>
 </head>
 
 <body>
+<h1 style="text-align:center; font-size: 40px;">Exploring Classical Piano Performance Generation with Expressive Music Variational AutoEncoder</h1>
+<h2 style="text-align:center; font-size: 30px;">Online Supplementary Material</h2>
 
-<div class="container">
-
-	<header role="banner">
-
-	</header>
-    <main role="main">
-
-
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
-  <tr>
+<tr>
   <td>
-      <papertitle>Exploring Classical Piano Performance Generation with Expressive Music Variational AutoEncoder</papertitle>
+      <b><h2>Jing Luo, Xinyu Yang, and Jie Wei</h2></b>
+      <p>
+          Xi'an Jiaotong University, China
+          <br>
+          China Mobile Group Shaanxi Co., Ltd., China
+      </p>
+      <!-- <p>
+          Submitted to IEEE TMM. &nbsp;&nbsp; <a href="xxx">arXiv (not available)</a>
+      </p> -->
   </td>
-  </tr>
-  
-  <tr>
-      <td>
-          <b><author>Jing Luo, Xinyu Yang, and Jie Wei</author></b>
-          <p>
-              Xi'an Jiaotong University, China
-              <br>
-              China Mobile Group Shaanxi Co., Ltd., China
-          </p>
-          <!-- <p>
-              Submitted to IEEE TMM. &nbsp;&nbsp; <a href="xxx">arXiv (not available)</a>
-          </p> -->
-      </td>
-  </tr>
+</tr>
 
-  <tr>
+<tr>
+  <td>
+      <h1>Abstract</h1>
+      <p>
+        The creativity of classical music arises not only from composers who craft the musical sheets but also from performers who interpret the static notations with expressive nuances. 
+        This paper addresses the challenge of generating classical piano performances from scratch, aiming to emulate the dual roles of composer and pianist in the creative process. 
+        We introduce the Expressive Compound Word (ECP) representation, which effectively captures both the metrical structure and expressive nuances of classical performances. 
+        Building on this, we propose the Expressive Music Variational AutoEncoder (XMVAE), a model featuring two branches: a Vector Quantized Variational AutoEncoder (VQ-VAE) branch that generates score-related content, 
+        representing the <i>Composer</i>, and a vanilla VAE branch that produces expressive details, fulfilling the role of <i>Pianist</i>. 
+        These branches are jointly trained with similar Seq2Seq architectures, leveraging a multiscale encoder to capture beat-level contextual information and an orthogonal Transformer decoder for efficient compound tokens decoding. 
+        Both objective and subjective evaluations demonstrate that XMVAE generates classical performances with superior musical quality compared to state-of-the-art models. 
+        Furthermore, pretraining the <i>Composer</i> branch on extra musical score datasets contribute to a significant performance gain.
+        
+      </p>
+  </td>
+</tr>
+
+<tr>
     <td>
-        <heading>Abstract</heading>
-        <p>
-          The creativity of classical music arises not only from composers who craft the musical sheets but also from performers who interpret the static notations with expressive nuances. 
-          This paper addresses the challenge of generating classical piano performances from scratch, aiming to emulate the dual roles of composer and pianist in the creative process. 
-          We introduce the Expressive Compound Word (ECP) representation, which effectively captures both the metrical structure and expressive nuances of classical performances. 
-          Building on this, we propose the Expressive Music Variational AutoEncoder (XMVAE), a model featuring two branches: a Vector Quantized Variational AutoEncoder (VQ-VAE) branch that generates score-related content, 
-          representing the <i>Composer</i>, and a vanilla VAE branch that produces expressive details, fulfilling the role of <i>Pianist</i>. 
-          These branches are jointly trained with similar Seq2Seq architectures, leveraging a multiscale encoder to capture beat-level contextual information and an orthogonal Transformer decoder for efficient compound tokens decoding. 
-          Both objective and subjective evaluations demonstrate that XMVAE generates classical performances with superior musical quality compared to state-of-the-art models. 
-          Furthermore, pretraining the <i>Composer</i> branch on extra musical score datasets contribute to a significant performance gain.
-          
-        </p>
-    </td>
-  </tr>
-
-
-  <tr>
-    <td>
-      <heading> Architecture</heading>
+      <h1> Architecture</h1>
       <p>
         <img width="80%" height="80%" src="./XMVAE/xmvae_overall_new.jpg" alt="mgd_large">
       </p>
@@ -76,7 +77,7 @@
 
   <tr>
     <td>
-      <heading>Generated Samples</heading>
+      <h1>Generated Samples</h1>
     </td>
   </tr>
 
@@ -85,7 +86,7 @@
 
   <tr>
     <td>
-      <subheading><strong>XMVAE(ours)</strong></subheading>
+      <h2>XMVAE(ours)</h2>
         <div class="ex">
           <audio controls>
               <source src="XMVAE/XMVAE-1_perf.mp3">
@@ -114,7 +115,7 @@
 
   <tr>
     <td>
-      <subheading><strong>NMT</strong></subheading>
+      <h2>NMT</h2>
         <div class="ex">
           <audio controls>
               <source src="NMT/NMT-1_perf.mp3">
@@ -143,7 +144,7 @@
 
   <tr>
     <td>
-      <subheading><strong>ECPT</strong></subheading>
+      <h2>ECPT</h2>
         <div class="ex">
           <audio controls>
               <source src="ECPT/ECPT-1_perf.mp3">
@@ -172,7 +173,7 @@
 
   <tr>
     <td>
-      <subheading><strong>Transformer_GAN</strong></subheading>
+      <h2>Transformer_GAN</h2>
         <div class="ex">
           <audio controls>
               <source src="Transformer_GAN/TGAN-1_perf.mp3">
@@ -202,7 +203,7 @@
 
   <tr>
     <td>
-      <subheading><strong>MT</strong></subheading>
+      <h2>MT</h2>
         <div class="ex">
           <audio controls>
               <source src="MT/MT-1_perf.mp3">
@@ -249,10 +250,6 @@
     </td>
   </tr>
 </table>
-
-</main>
-</div>
-
 
 </body>
 </html>
