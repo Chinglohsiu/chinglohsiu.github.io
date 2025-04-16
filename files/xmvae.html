@@ -2,84 +2,181 @@
 <html>
 <head>
 <meta charset="utf-8">
-<style>
-  body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Helvetica', sans-serif;
-      margin: auto;
-      max-width: 1400px;
-      padding-left: 5%;
-      padding-right: 5%;
-  }
-  h1 {
-      font-size: 35px;
-  }
-  h2 {
-      font-size: 25px;
-      font-weight: normal;
-  }
-  p {
-      font-size: 16px;
-  }
-  img {
-      width: 450px;
-  }
-  .ex {
-      display: inline-block;
-  }
-</style>
+<meta name="generator" content="Hugo 0.55.5" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/custom.css">
+
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<style type="text/css">
+        body,
+        td,
+        th,
+        tr,
+        p,
+        a {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        font-size: 18px
+        }
+
+        strong {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        font-size: 18px;
+        /* color: rgb(180, 16, 44); */
+        }
+
+        annot {
+        font-family: 'Lato', Verdana, Helvetica, sans-serif;
+        font-size: 18px;
+        color: rgb(100, 100, 100);
+        }
+
+        papertitle {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 32px;
+            color: rgb(0, 62, 116);
+            /* color: rgb(0, 0, 0); */
+        }
+
+        author {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            /* color : rgb(180, 16, 44) */
+            color: rgb(0, 0, 0);
+        }
+
+        heading {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 25px;
+            color: rgb(0, 62, 116);
+            /* color: rgb(0, 0, 0); */
+        }
+
+        subheading {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 22px;
+            /* font-style:italic; */
+            color : rgb(57, 116, 169)
+            /* color: rgb(0, 0, 0); */
+        }
+
+        .footer {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 14px;
+            opacity: 0.75;
+            color: #777;
+        }
+
+/* 创建计数器作用域 */
+.ex-container {
+    counter-reset: section; /* 初始化计数器 */
+    margin: 20px 0;
+}
+
+/* 每个音频块的基础样式 */
+.ex {
+    display: flex;          /* 启用弹性布局 */
+    align-items: center;    /* 垂直居中 */
+    gap: 15px;              /* 元素间距 */
+    margin: 10px 0;
+}
+
+/* 自动生成序号（带装饰样式） */
+.ex::before {
+    counter-increment: section; /* 计数器递增 */
+    content: counter(section);  /* 显示当前计数 */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    min-width: 30px;        /* 保持数字对齐 */
+    text-align: center;
+    /* border-right: 3px solid #3498db; */
+    padding-right: 12px;
+}
+
+/* 音频控件宽度控制 */
+audio {
+    width: 300px;           /* 固定宽度 */
+    transition: opacity 0.3s;
+}
+
+audio:hover {
+    opacity: 0.9;
+}
+
+    </style>
 
 <title>XMVAE</title>
 </head>
 
 <body>
-<h1 style="text-align:center; font-size: 40px;">Exploring Classical Piano Performance Generation with Expressive Music Variational AutoEncoder</h1>
-<h2 style="text-align:center; font-size: 30px;">Online Supplementary Material</h2>
 
-<hr>
+<div class="container">
 
-<tr>
+	<header role="banner">
+
+	</header>
+    <main role="main">
+
+
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
+  <tr>
   <td>
-      <b><h2 style="text-align:center; font-size: 25px;">Jing Luo, Xinyu Yang, and Jie Wei</h2></b>
-      <p>
-          Xi'an Jiaotong University, China
-          <br>
-          China Mobile Group Shaanxi Co., Ltd., China
-      </p>
-      <!-- <p>
-          Submitted to IEEE TMM. &nbsp;&nbsp; <a href="xxx">arXiv (not available)</a>
-      </p> -->
+      <papertitle>Exploring Classical Piano Performance Generation with Expressive Music Variational AutoEncoder</papertitle>
   </td>
-</tr>
+  </tr>
+  
+  <tr>
+      <td>
+          <b><author>Jing Luo, Xinyu Yang, and Jie Wei</author></b>
+          <p>
+              Xi'an Jiaotong University, China
+              <br>
+              China Mobile Group Shaanxi Co., Ltd., China
+          </p>
+          <!-- <p>
+              Submitted to IEEE TMM. &nbsp;&nbsp; <a href="xxx">arXiv (not available)</a>
+          </p> -->
+      </td>
+  </tr>
 
-<tr>
-  <td>
-      <h1>Abstract</h1>
-      <p>
-        The creativity of classical music arises not only from composers who craft the musical sheets but also from performers who interpret the static notations with expressive nuances. 
-        This paper addresses the challenge of generating classical piano performances from scratch, aiming to emulate the dual roles of composer and pianist in the creative process. 
-        We introduce the Expressive Compound Word (ECP) representation, which effectively captures both the metrical structure and expressive nuances of classical performances. 
-        Building on this, we propose the Expressive Music Variational AutoEncoder (XMVAE), a model featuring two branches: a Vector Quantized Variational AutoEncoder (VQ-VAE) branch that generates score-related content, 
-        representing the <i>Composer</i>, and a vanilla VAE branch that produces expressive details, fulfilling the role of <i>Pianist</i>. 
-        These branches are jointly trained with similar Seq2Seq architectures, leveraging a multiscale encoder to capture beat-level contextual information and an orthogonal Transformer decoder for efficient compound tokens decoding. 
-        Both objective and subjective evaluations demonstrate that XMVAE generates classical performances with superior musical quality compared to state-of-the-art models. 
-        Furthermore, pretraining the <i>Composer</i> branch on extra musical score datasets contribute to a significant performance gain.
-        
-      </p>
-  </td>
-</tr>
-
-<tr>
+  <tr>
     <td>
-      <h1> Architecture</h1>
+        <heading>Abstract</heading>
+        <p>
+          The creativity of classical music arises not only from composers who craft the musical sheets but also from performers who interpret the static notations with expressive nuances. 
+          This paper addresses the challenge of generating classical piano performances from scratch, aiming to emulate the dual roles of composer and pianist in the creative process. 
+          We introduce the Expressive Compound Word (ECP) representation, which effectively captures both the metrical structure and expressive nuances of classical performances. 
+          Building on this, we propose the Expressive Music Variational AutoEncoder (XMVAE), a model featuring two branches: a Vector Quantized Variational AutoEncoder (VQ-VAE) branch that generates score-related content, 
+          representing the <i>Composer</i>, and a vanilla VAE branch that produces expressive details, fulfilling the role of <i>Pianist</i>. 
+          These branches are jointly trained with similar Seq2Seq architectures, leveraging a multiscale encoder to capture beat-level contextual information and an orthogonal Transformer decoder for efficient compound tokens decoding. 
+          Both objective and subjective evaluations demonstrate that XMVAE generates classical performances with superior musical quality compared to state-of-the-art models. 
+          Furthermore, pretraining the <i>Composer</i> branch on extra musical score datasets contribute to a significant performance gain.
+          
+        </p>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>
+      <heading> Architecture</heading>
       <p>
-        <img width="100%" height="100%" src="./XMVAE/xmvae_overall_new.jpg" alt="mgd_large">
+        <img width="80%" height="80%" src="./XMVAE/xmvae_overall_new.jpg" alt="mgd_large">
       </p>
     </td>
   </tr>
 
   <tr>
     <td>
-      <h1>Generated Samples</h1>
+      <heading>Generated Samples</heading>
+      <p>
+        <strong>Note</strong>: The following <font color="#FF00FF"><i>audios with the same index among different models</i></font> use the same prompt (the first beat of their corresponding score sheet in real music).
+      </p>
     </td>
   </tr>
 
@@ -88,7 +185,8 @@
 
   <tr>
     <td>
-      <h2>XMVAE(ours)</h2>
+      <subheading><strong>XMVAE(ours)</strong></subheading>
+      <div class="ex-container">
         <div class="ex">
           <audio controls>
               <source src="XMVAE/XMVAE-1_perf.mp3">
@@ -111,13 +209,15 @@
         <audio controls>
             <source src="XMVAE/XMVAE-4_perf.mp3">
         </audio>
+      </div>
     </div>
     </td>
   </tr>
 
   <tr>
     <td>
-      <h2>NMT</h2>
+      <subheading><strong>NMT</strong></subheading>
+      <div class="ex-container">
         <div class="ex">
           <audio controls>
               <source src="NMT/NMT-1_perf.mp3">
@@ -140,13 +240,15 @@
         <audio controls>
             <source src="NMT/NMT-4_perf.mp3">
         </audio>
+      </div>
     </div>
     </td>
   </tr>
 
   <tr>
     <td>
-      <h2>ECPT</h2>
+      <subheading><strong>ECPT</strong></subheading>
+      <div class="ex-container">
         <div class="ex">
           <audio controls>
               <source src="ECPT/ECPT-1_perf.mp3">
@@ -169,13 +271,15 @@
         <audio controls>
             <source src="ECPT/ECPT-4_perf.mp3">
         </audio>
+      </div>
     </div>
     </td>
   </tr>
 
   <tr>
     <td>
-      <h2>Transformer_GAN</h2>
+      <subheading><strong>Transformer_GAN</strong></subheading>
+      <div class="ex-container">
         <div class="ex">
           <audio controls>
               <source src="Transformer_GAN/TGAN-1_perf.mp3">
@@ -198,6 +302,7 @@
         <audio controls>
             <source src="Transformer_GAN/TGAN-4_perf.mp3">
         </audio>
+      </div>
     </div>
     </td>
   </tr>
@@ -205,7 +310,8 @@
 
   <tr>
     <td>
-      <h2>MT</h2>
+      <subheading><strong>MT</strong></subheading>
+      <div class="ex-container">
         <div class="ex">
           <audio controls>
               <source src="MT/MT-1_perf.mp3">
@@ -228,6 +334,7 @@
         <audio controls>
             <source src="MT/MT-4_perf.mp3">
         </audio>
+      </div>
     </div>
     </td>
   </tr>
@@ -247,11 +354,15 @@
         <script>
           t = new Date(document.lastModified).toLocaleDateString()
           document.write(t);
-        </script>         
+        </script>
       </p>
     </td>
   </tr>
 </table>
+
+</main>
+</div>
+
 
 </body>
 </html>
