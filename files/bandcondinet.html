@@ -181,21 +181,18 @@ body,
     <td>
         <heading>Abstract</heading>
         <p>
-          Conditional music generation offers significant advantages in terms of user convenience and control, 
-          presenting notable potential in AI-generated content research. 
-          When building conditional generative systems for multi-instrument popular songs,
-          two main challenges typically arise: the insufficient fidelity of conditions and the poor quality of the generated music.
-          To address these issues, we first propose multi-view features across time and instruments as high-fidelity and fine-grained conditions. 
-          In addition, an efficient music representation called REMI_Track(BPE) is designed to convert multitrack music into multiple music sequences. 
-          Subsequently, we release BandCondiNet, a conditional model based on parallel Transformers, 
-          designed to process the multiple music sequences and generate high-quality multitrack samples conditioned on the provided multi-view features. 
-          Specifically, BandCondiNet incorporates two specialized modules: Structure Enhanced Attention (SEA) to strengthen the resulting musical structure, 
-          and Cross-Track Transformer (CTT) to enhance inter-track harmony. 
-          Experimental results tested on two popular music datasets of different lengths demonstrate 
-          that the proposed BandCondiNet outperforms other conditional music generation models on most objective metrics in terms of <i>fidelity</i> 
-          and <i>inference speed</i>, and shows great robustness in generating long music samples. 
-          The subjective evaluations further show BandCondiNet trained on short datasets performs comparable to state-of-art models, 
-          while outperforming them significantly training on longer datasets.
+          Conditional music generation offers significant advantages in terms of user convenience and control, presenting great potential in AI-generated content research. 
+          However, building conditional generative systems for multitrack popular songs presents three primary challenges: insufficient fidelity of input conditions, 
+          poor structural modeling, and inadequate inter-track harmony learning in generative models. To address these issues, we propose BandCondiNet, 
+          a conditional model based on parallel Transformers, designed to process the multiple music sequences and generate high-quality multitrack samples. 
+          Specifically, we propose multi-view features across time and instruments as high-fidelity conditions. 
+          Moreover, we propose two specialized modules for BandCondiNet: Structure Enhanced Attention (SEA) to strengthen the musical structure, 
+          and Cross-Track Transformer (CTT) to enhance inter-track harmony. We conducted both objective and subjective evaluations on two popular music datasets with different sequence lengths. 
+          Objective results on the shorter dataset show that BandCondiNet outperforms other conditional models in 9 out of 10 metrics related to <i>fidelity</i> and <i>inference speed</i>>, 
+          with the exception of Chord Accuracy. On the longer dataset, BandCondiNet surpasses all conditional models across all 10 metrics. 
+          Subjective evaluations across four criteria reveal that BandCondiNet trained on the shorter dataset performs best in Richness and performs comparably to state-of-the-art models in the other three criteria, 
+          while significantly outperforming them across all criteria when trained on the longer dataset. To further expand the application scope of BandCondiNet, 
+          future work should focus on developing an advanced conditional model capable of adapting to more user-friendly input conditions and supporting flexible instrumentation.
           
         </p>
     </td>
@@ -206,7 +203,7 @@ body,
         <heading>Dataset</heading>
         <p>
           We conduct experiments on a popular music subset of 
-          the <a href="https://colinraffel.com/projects/lmd/" target="_blank">LakhMIDI dataset(LMD)</a>, which is the largest 
+          the <a href="https://colinraffel.com/projects/lmd/" target="_blank">LakhMIDI dataset(LMD)</a>, which is one of the largest 
           publicly available symbolic music dataset that contains multiple instruments. 
         </p>
     </td>
@@ -216,8 +213,23 @@ body,
     <td>
       <heading>Code</heading>
       <p>
-        The source code is available at <a href="https://github.com/Chinglohsiu/BandCondiNet" target="_blank">here (To be updated)</a>.
+        The source code is available at <a href="https://github.com/Chinglohsiu/BandCondiNet" target="_blank">here</a>.
       </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <heading>Citation</heading>
+      <p>
+        Please consider citing the following article if you found our work useful:
+      </p>
+      <pre style="background-color: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; padding: 15px; white-space: pre-wrap; word-wrap: break-word;"><code>@article{luo2024bandcondinet,
+    title={BandCondiNet: Parallel Transformers-based Conditional Popular Music Generation with Multi-View Features}, 
+    author={Luo, Jing and Yang, Xinyu and Herremans, Dorien},
+    journal={arXiv preprint arXiv:2407.10462v2},
+    year={2024}
+}</code></pre>
     </td>
   </tr>
 
